@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: hello-node-deployment
+
+spec:
+
+  replicas: 4
+  
+  minReadySeconds: 3
+
+  selector:
+
+    matchLabels:
+
+      app: hello-node
+
+  template:
+
+    metadata:
+
+      name: hello-node-pod
+
+      labels:
+
+        app: hello-node
+
+    spec:
+
+      containers:
+
+      - name: hello-node
+
+        image: docker.io/r2god7k/exercise:v1
+
+        imagePullPolicy: Always
+
+        ports:
+
+        - containerPort: 8080
